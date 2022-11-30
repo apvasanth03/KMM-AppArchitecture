@@ -1,11 +1,12 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("plugin.serialization") version (Versions.kotlin)
 }
 
 kotlin {
     android()
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -17,14 +18,33 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        // Common
+        val commonMain by getting {
+            dependencies {
+                implementation(Dependencies.coroutines)
+
+                implementation(Dependencies.ktorClientCore)
+                implementation(Dependencies.ktorClientLogging)
+                implementation(Dependencies.ktorClientContentNegotiation)
+                implementation(Dependencies.ktorSerializationKotlinxJson)
+                implementation(Dependencies.koinCore)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+
+        // Andorid
+        val androidMain by getting {
+            dependencies {
+                implementation(Dependencies.ktorClientOkhttp)
+            }
+        }
         val androidTest by getting
+
+        // iOS
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -33,6 +53,10 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies {
+                implementation(Dependencies.ktorClientDarwin)
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
@@ -48,9 +72,9 @@ kotlin {
 
 android {
     namespace = "com.vasanth.kmm.apparchitecture"
-    compileSdk = 32
+    compileSdk = ConfigData.compileSdkVersion
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = ConfigData.minSdkVersion
+        targetSdk = ConfigData.targetSdkVersion
     }
 }

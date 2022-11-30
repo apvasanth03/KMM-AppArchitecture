@@ -1,6 +1,7 @@
 package com.vasanth.kmm.apparchitecture.android
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -16,7 +17,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import com.vasanth.kmm.apparchitecture.Greeting
+import com.vasanth.kmm.apparchitecture.data.model.User
+import com.vasanth.kmm.apparchitecture.domain.core.Result
+import com.vasanth.kmm.apparchitecture.domain.usecase.GetUserListUseCase
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 @Composable
 fun MyApplicationTheme(
@@ -58,6 +65,7 @@ fun MyApplicationTheme(
 }
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -70,6 +78,36 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        getUserList()
+    }
+
+    // Test Shared UseCase
+    private val getUserListUseCase: GetUserListUseCase by inject()
+    private val TAG = "GET_USER_LIST"
+    private fun getUserList() {
+        lifecycleScope.launch {
+            val param = GetUserListUseCase.Param(page = 1)
+            val result = getUserListUseCase.invoke(parameters = param)
+            when (result) {
+                is Result.Success -> {
+                    getUserListSuccess(users = result.data)
+                }
+                is Result.Error -> {
+                    getUserListFailure(exception = result.exception)
+                }
+            }
+        }
+    }
+
+    private fun getUserListSuccess(users: List<User>) {
+        Log.i(TAG, "------------ getUserListSuccess ---------------")
+        Log.i(TAG, users.toString())
+    }
+
+    private fun getUserListFailure(exception: Exception) {
+        Log.i(TAG, "------------ getUserListFailure ---------------")
+        exception.printStackTrace()
     }
 }
 
