@@ -1,4 +1,5 @@
 object Dependencies {
+    // Common
     val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
 
     val ktorClientCore = "io.ktor:ktor-client-core:${Versions.ktor}"
@@ -9,5 +10,10 @@ object Dependencies {
     val ktorClientDarwin = "io.ktor:ktor-client-darwin:${Versions.ktor}"
 
     val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
-    val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+
+    // Android
+    var activityKtx = "androidx.activity:activity:${Versions.activity}"
+    val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+    val koinAndroid = "io.insert-koin:koin-android:${Versions.koinAndroid}"
 }

@@ -1,7 +1,6 @@
 package com.vasanth.kmm.apparchitecture.android
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -17,13 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.vasanth.kmm.apparchitecture.Greeting
-import com.vasanth.kmm.apparchitecture.data.model.User
-import com.vasanth.kmm.apparchitecture.domain.core.Result
-import com.vasanth.kmm.apparchitecture.domain.usecase.GetUserListUseCase
+import com.vasanth.kmm.apparchitecture.presentation.userlist.model.UserListUIState
+import com.vasanth.kmm.apparchitecture.presentation.userlist.viewmodel.UserListViewModel
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Composable
 fun MyApplicationTheme(
@@ -66,6 +66,8 @@ fun MyApplicationTheme(
 
 class MainActivity : ComponentActivity() {
 
+    val viewModel: UserListViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -79,36 +81,28 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        getUserList()
+        setUpViewModelBindings()
     }
 
-    // Test Shared UseCase
-    private val getUserListUseCase: GetUserListUseCase by inject()
-    private val TAG = "GET_USER_LIST"
-    private fun getUserList() {
+    private fun setUpViewModelBindings() {
+        observeUIState()
+    }
+
+    private fun observeUIState() {
         lifecycleScope.launch {
-            val param = GetUserListUseCase.Param(page = 1)
-            val result = getUserListUseCase.invoke(parameters = param)
-            when (result) {
-                is Result.Success -> {
-                    getUserListSuccess(users = result.data)
-                }
-                is Result.Error -> {
-                    getUserListFailure(exception = result.exception)
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect {
+                    handleUIState(it)
                 }
             }
         }
     }
 
-    private fun getUserListSuccess(users: List<User>) {
-        Log.i(TAG, "------------ getUserListSuccess ---------------")
-        Log.i(TAG, users.toString())
+    private fun handleUIState(state: UserListUIState) {
+        println("-----------UIState------------")
+        println(state.toString())
     }
 
-    private fun getUserListFailure(exception: Exception) {
-        Log.i(TAG, "------------ getUserListFailure ---------------")
-        exception.printStackTrace()
-    }
 }
 
 @Composable

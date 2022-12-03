@@ -40,6 +40,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(Dependencies.ktorClientOkhttp)
+                implementation(Dependencies.koinAndroid)
+                implementation(Dependencies.viewModelKtx)
             }
         }
         val androidTest by getting

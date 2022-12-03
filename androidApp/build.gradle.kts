@@ -41,5 +41,8 @@ dependencies {
     implementation("androidx.compose.material:material:1.2.1")
     implementation("androidx.activity:activity-compose:1.5.1")
 
+    implementation(Dependencies.activityKtx)
+    implementation(Dependencies.fragmentKtx)
+
     implementation(Dependencies.koinAndroid)
 }
