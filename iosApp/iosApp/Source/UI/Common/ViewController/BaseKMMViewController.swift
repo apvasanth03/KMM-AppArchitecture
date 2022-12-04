@@ -1,6 +1,7 @@
 import UIKit
 import shared
 
+/// Base ViewController for all our KMM ViewController
 class BaseKMMViewController<VM: ViewModel>: UIViewController {
     
     var viewModel: VM!

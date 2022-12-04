@@ -18,6 +18,7 @@ abstract class BaseViewModel<STATE : Any, EVENT : Any, SIDEEFECT : Any>() : View
     val uiState: StateFlow<STATE> by lazy { _uiState }
     val sideEffect: Flow<SIDEEFECT> by lazy { _sideEffect.receiveAsFlow() }
 
+    // Exposes [FlowAdapter] from the [Flow] to make it easier to interact with from Swift.
     val uiStateAsCallback: FlowAdapter<STATE> by lazy { uiState.asCallbacks(viewModelScope) }
     val sideEffectAsCallback: FlowAdapter<SIDEEFECT> by lazy { sideEffect.asCallbacks(viewModelScope) }
     // endregion

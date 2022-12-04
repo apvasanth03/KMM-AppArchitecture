@@ -1,5 +1,8 @@
 package com.vasanth.kmm.apparchitecture.data.core
 
+/**
+ * [RemoteDataStoreException] - Exception thrown from [RemoteDataSource]
+ */
 sealed class RemoteDataStoreException(
     message: String? = null,
     cause: Throwable? = null

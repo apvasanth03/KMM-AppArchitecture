@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 /**
- * Executes business logic synchronously or asynchronously using Coroutines.
+ * Executes business logic asynchronously using Coroutines.
  */
 @Suppress("TooGenericExceptionCaught")
 abstract class UseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {

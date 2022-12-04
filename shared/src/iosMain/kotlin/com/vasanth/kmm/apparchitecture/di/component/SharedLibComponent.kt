@@ -4,7 +4,10 @@ import com.vasanth.kmm.apparchitecture.presentation.userlist.viewmodel.UserListV
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 
-// Called from Swift
+/**
+ * [SharedLibComponent] - Used to retrieve shared kotlin dependencies from iOS App.
+ * Called from Swift
+ */
 object SharedLibComponent : KoinComponent {
 
     fun userListViewModel(): UserListViewModel = get()

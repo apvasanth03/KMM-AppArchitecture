@@ -29,8 +29,6 @@ class UserListViewModel constructor(
 
     private fun loadUsers() {
         viewModelScope.launch {
-            //_uiState.update { UserListUIState.Loading }
-
             val param = GetUserListUseCase.Param(page = 1)
             val result = getUserListUseCase.invoke(parameters = param)
             when (result) {

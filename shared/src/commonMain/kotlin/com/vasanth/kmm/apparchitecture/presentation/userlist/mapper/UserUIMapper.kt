@@ -13,7 +13,7 @@ class UserUIMapper constructor(
         return with(input) {
             val uiModel = UserUIModel(
                 id = id,
-                name = "${firstName} ${lastName}",
+                name = "$firstName $lastName",
                 email = email,
                 avatar = avatar
             )
