@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<STATE : Any, EVENT : Any, SIDEEFECT : Any>() : ViewModel() {
+abstract class BaseViewModel<STATE : Any, EVENT : Any, SIDEEFECT : Any> : ViewModel() {
 
     // region Variable Declaration
     protected abstract val _uiState: MutableStateFlow<STATE>

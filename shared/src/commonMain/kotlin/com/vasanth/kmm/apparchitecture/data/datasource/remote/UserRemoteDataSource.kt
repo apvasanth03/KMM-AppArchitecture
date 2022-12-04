@@ -20,5 +20,4 @@ class UserRemoteDataSource constructor(
         
         return userListResponse.data
     }
-
 }
