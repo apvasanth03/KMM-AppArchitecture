@@ -1,0 +1,13 @@
+<resources>
+    <!-- Common Strings -->
+    <string name="network_error_title">Connection error</string>
+    <string name="network_error_subtitle">Check your wifi/4G internet connection, then refresh the page</string>
+    <string name="unknown_error_title">Unexpected Error</string>
+    <string name="unknown_error_subtitle">Problem with server. Please try again.</string>
+    <string name="try_again">Try Again</string>
+    <!-- End -->
+
+    <string name="app_name">KMM App</string>
+    
+    <string name="user_list">User List</string>
+</resources>
