@@ -1,7 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION", "ForbiddenComment") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    kotlin("plugin.serialization") version (Versions.kotlin)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -21,13 +22,13 @@ kotlin {
         // Common
         val commonMain by getting {
             dependencies {
-                implementation(Dependencies.coroutines)
-
-                implementation(Dependencies.ktorClientCore)
-                implementation(Dependencies.ktorClientLogging)
-                implementation(Dependencies.ktorClientContentNegotiation)
-                implementation(Dependencies.ktorSerializationKotlinxJson)
-                implementation(Dependencies.koinCore)
+                // Kotlin
+                implementation(libs.coroutines)
+                implementation(libs.ktorClientCore)
+                implementation(libs.ktorClientLogging)
+                implementation(libs.ktorClientContentNegotiation)
+                implementation(libs.ktorSerializationKotlinxJson)
+                implementation(libs.koinCore)
             }
         }
         val commonTest by getting {
@@ -39,9 +40,9 @@ kotlin {
         // Andorid
         val androidMain by getting {
             dependencies {
-                implementation(Dependencies.ktorClientOkhttp)
-                implementation(Dependencies.koinAndroid)
-                implementation(Dependencies.viewModelKtx)
+                implementation(libs.ktorClientOkhttp)
+                implementation(libs.koinAndroid)
+                implementation(libs.viewModelKtx)
             }
         }
         val androidTest by getting
@@ -57,7 +58,7 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
 
             dependencies {
-                implementation(Dependencies.ktorClientDarwin)
+                implementation(libs.ktorClientDarwin)
             }
         }
         val iosX64Test by getting
@@ -74,9 +75,9 @@ kotlin {
 
 android {
     namespace = "com.vasanth.kmm.apparchitecture"
-    compileSdk = ConfigData.compileSdkVersion
+    compileSdk = 33
     defaultConfig {
-        minSdk = ConfigData.minSdkVersion
-        targetSdk = ConfigData.targetSdkVersion
+        minSdk = 21
+        targetSdk = 33
     }
 }
