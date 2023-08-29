@@ -1,0 +1,93 @@
+############################
+# Versions
+############################
+[versions]
+# Kotlin
+kotlin = "1.9.0"
+coroutines = "1.7.3"
+ktor = "2.3.3"
+
+# Android
+andoridPlugin = "8.1.0"
+activity = "1.7.2"
+fragment = "1.5.7"
+lifecycle = "2.6.1"
+composeBom = "2023.06.01"
+composeCompiler = "1.5.2"
+navigation = "2.6.0"
+
+# Google
+
+
+# Third-Party
+koin = "3.4.3"
+
+# Test
+
+
+
+
+############################
+# Libraries
+############################
+[libraries]
+# Kotlin
+kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlinAndroidPlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinXSerializationPlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+ktorClientCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktorClientLogging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktorClientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktorSerializationKotlinxJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorClientOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktorClientDarwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
+# Android
+androidPlugin = { module = "com.android.tools.build:gradle", version.ref = "andoridPlugin" }
+activityKtx = { module = "androidx.activity:activity", version.ref = "activity" }
+activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
+viewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+fragmentKtx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+composeBom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+composeMaterial = { module = "androidx.compose.material:material" }
+composeUITooling = { module = "androidx.compose.ui:ui-tooling" }
+composeUIToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+navigationFragmentKtx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigationUIKtx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+
+# Google
+
+
+# Third-Party
+koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koinAndroid = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+
+# Test
+
+
+
+
+############################
+# Bundles
+############################
+[bundles]
+compose = ["composeMaterial", "composeUITooling", "composeUIToolingPreview", "activityCompose", "viewModelCompose"]
+navigation = ["navigationFragmentKtx", "navigationUIKtx"]
+
+
+
+
+############################
+# Plugins
+############################
+[plugins]
+# Kotlin
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+# Android
+androidApplication = { id = "com.android.application", version.ref = "andoridPlugin" }
+androidLibrary = { id = "com.android.library", version.ref = "andoridPlugin" }
