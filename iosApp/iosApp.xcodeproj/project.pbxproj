@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12318CCA2AA770F20049E0D7 /* ObserableUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12318CC92AA770F20049E0D7 /* ObserableUserListViewModel.swift */; };
 		12D82F01293B669C00B8BEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D82F00293B669C00B8BEFC /* AppDelegate.swift */; };
 		12D82F03293B669C00B8BEFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D82F02293B669C00B8BEFC /* SceneDelegate.swift */; };
 		12D82F05293B669C00B8BEFC /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D82F04293B669C00B8BEFC /* UserListViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12318CC92AA770F20049E0D7 /* ObserableUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserableUserListViewModel.swift; sourceTree = "<group>"; };
 		12D82EFD293B669C00B8BEFC /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D82F00293B669C00B8BEFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12D82F02293B669C00B8BEFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12318CC82AA770DB0049E0D7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				12318CC92AA770F20049E0D7 /* ObserableUserListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		12D82EF4293B669C00B8BEFC = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 		12D82F23293B9E0600B8BEFC /* Userlist */ = {
 			isa = PBXGroup;
 			children = (
+				12318CC82AA770DB0049E0D7 /* ViewModel */,
 				12F1451B293BA01600A85EDA /* View */,
 				12D82F24293B9EA600B8BEFC /* ViewController */,
 			);
@@ -326,6 +337,7 @@
 				12F14529293BBEF300A85EDA /* BaseKMMViewController.swift in Sources */,
 				12D82F03293B669C00B8BEFC /* SceneDelegate.swift in Sources */,
 				12D82F22293B9C8D00B8BEFC /* CombineAdapters.swift in Sources */,
+				12318CCA2AA770F20049E0D7 /* ObserableUserListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
